@@ -11,7 +11,7 @@ Kitty
 Waybar
 
 ### Shell
-Zsh w/ oh-my-posh
+Zsh w/ Starship-shell
 
 ### Editor
 Neovim
