@@ -1,0 +1,56 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Replace the '❯' symbol in the prompt with '➜'
+#success_symbol = '[󰊕 =>](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+
+[username]
+style_root = "red bold"
+format = "🦊 [$user](bold green) "
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format = 'on [$hostname](bold yellow) '
+trim_at = "."
+disabled = false
+
+[character]
+success_symbol = " [>](bold green)"
+error_symbol = " [x](bold red)"
+vimcmd_symbol = " [<](bold green)"
+
+
+[git_branch]
+symbol = "🌿 "
+style = "bold cyan"
+
+[git_status]
+stashed = "📦 "
+ahead = "🚀 "
+diverged = "⚡"
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[python]
+symbol = "🐍 "
+style = "bold blue"
+
+[nodejs]
+symbol = "🟩 "
+style = "bold green"
+
+[ruby]
+symbol = "💎 "
+style = "bold red"
+
+[rust]
+symbol = "🦀 "
+style = "bold orange"
+
