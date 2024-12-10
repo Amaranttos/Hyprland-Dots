@@ -10,9 +10,17 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-alias swww='swww img --transition-type center'
 
-
+alias ls='eza -1 --icons=auto'
+alias c='clear'
+alias yz='yazi'
+alias e='eza -1 --icons=auto'
+alias wp='swww img --transition-type random'
+alias cor='wal -i'
+alias kitty_img='kitty +kitten icat'
+alias nv='nvim'
+alias bt='bat'
+alias yt-audio='yt-dlp -x --audio-format mp3 --embed-metadata --add-metadata --output "%(title)s.%(ext)s"'
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -73,7 +81,7 @@ alias swww='swww img --transition-type center'
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,7 +113,22 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH=$PATH:/home/camomila/.local/bin
-cat ~/.cache/wal/sequences
-#eval "$(starship init zsh)"
-eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/themes/1_shell.omp.json)"
+#cat ~/.cache/wal/sequences 
+
+# Install package using fzf
+function install(){
+  pacman -Sl | awk '{print $2" "$4}' \
+  | column -t | fzf --reverse --preview 'pacman -Si {1}' \
+  | xargs -ro sudo pacman -S
+}
+
+# this function installs packages from the AUR repository in the same way as the previous function
+
+function yinstall(){
+  yay -Sl | awk '{print $2" "$4}' \
+  | column -t | fzf --reverse --preview 'yay -Si {1}' \
+  | xargs -ro yay -S
+}
+
+eval "$(starship init zsh)"
+
