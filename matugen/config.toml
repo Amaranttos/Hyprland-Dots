@@ -1,0 +1,18 @@
+# ~/.config/matugen/config.toml
+
+# (Opcional) deixe o Matugen também definir o wallpaper via swww
+[config.wallpaper]
+command = "swww"
+arguments = ["img", "--transition-type", "center"]
+set = false  # mude para true se quiser que o Matugen aplique o papel de parede
+
+[templates.kitty]
+input_path = "~/.config/matugen/templates/kitty-colors.conf"
+output_path = "~/.config/kitty/colors.conf"
+post_hook = "pkill -SIGUSR1 kitty" # recarrega as instâncias do Kitty
+
+[templates.hyprland]
+input_path  = "~/.config/matugen/templates/hyprland-colors.conf"
+output_path = "~/.config/hypr/colors.conf"
+post_hook   = "hyprctl reload"
+
